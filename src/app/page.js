@@ -1,4 +1,7 @@
 "use client";
+import Footer from "@/components/Footer";
+import { FormDailog } from "@/components/Form";
+import Reviews from "@/components/Reviews";
 import Spinner from "@/components/Spinner";
 import {
   ClerkLoaded,
@@ -18,6 +21,8 @@ import { IoEllipsisVertical } from "react-icons/io5";
 
 export default function Page() {
   const { user } = useUser();
+  const OPTIONS = { loop: true };
+  const SLIDES = Array.from(Array(5).keys());
   return (
     <div className="min-h-screen bg-[#e8e6d7] py-6 flex flex-col gap-6 px-4 lg:px-16 md:px-10 sm:px-8">
       <div className="flex items-center justify-center gap-6">
@@ -63,37 +68,8 @@ export default function Page() {
         </div>
       </div>
       <div className="flex items-center justify-center gap-6 lg:flex-row flex-col">
-        <div className="rounded-xl lg:w-[65%] w-full h-72 bg-[#b5bf96] md:p-10 sm:p-8 p-6 flex gap-6">
-          <div className="bg-white h-full sm:w-[60%] w-full rounded-xl flex flex-col justify-between p-3">
-            <div className="flex items-start justify-between">
-              <div className="relative h-16 w-16 ">
-                <Image
-                  src="/avatar.webp"
-                  alt="notfound"
-                  fill
-                  className="rounded-xl"
-                />
-              </div>
-              <div>
-                <CiCircleCheck size={25} />
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold">Local Lifestyle?</h3>
-              <span className="text-[#a4b651] font-semibold">Naturally</span>
-            </div>
-          </div>
-          <div className="bg-white h-full w-[40%] rounded-xl flex-col justify-between p-3 hidden sm:flex">
-            <div className="flex items-start justify-end">
-              <div>
-                <CiHeart size={25} />
-              </div>
-            </div>
-            <div className="">
-              <h3 className="font-semibold">Love the ground</h3>
-              <span className="text-[#a4b651] font-semibold">you walk</span>
-            </div>
-          </div>
+        <div className="rounded-xl lg:w-[60%] w-full h-72 bg-[#b5bf96] md:p-10 sm:p-8 p-6 flex gap-6">
+          <Reviews slides={SLIDES} options={OPTIONS} />
         </div>
         <div className="rounded-xl lg:w-[45%] w-full sm:w-5/6 h-72 flex flex-col items-center justify-center gap-6">
           <div className="flex items-center gap-6 h-full w-full">
@@ -112,6 +88,15 @@ export default function Page() {
                     <SignedIn>
                       <UserButton afterSignOutUrl="/" />
                     </SignedIn>
+                    <SignedOut>
+                      <Image
+                        alt="notfound"
+                        src={"/avatarDummy.avif"}
+                        height={40}
+                        width={40}
+                        className="rounded-full"
+                      />
+                    </SignedOut>
                   </ClerkLoaded>
                 </div>
                 <div className="flex flex-col w-full">
@@ -154,7 +139,7 @@ export default function Page() {
               />
             </div>
             <div className=" h-full w-full flex flex-col gap-4 justify-between">
-              <div className="h-full w-full flex items-center justify-center bg-[#e0dfce]">
+              <div className="h-full w-full flex items-center justify-center bg-[#e0dfce] rounded-xl">
                 <ClerkLoading>
                   <Spinner color="black" />
                 </ClerkLoading>
@@ -179,9 +164,7 @@ export default function Page() {
               <div className="h-full w-full bg-white rounded-xl p-4">
                 <div className="bg-[#e0dfce] h-full w-full rounded-lg flex items-center justify-evenly text-sm p-1 text-center">
                   <span className="w-full cursor-pointer">Dashboard</span>
-                  <span className="bg-white w-full h-full flex items-center justify-center rounded-lg cursor-pointer">
-                    Fill Data
-                  </span>
+                  <FormDailog />
                 </div>
               </div>
             </div>
@@ -205,6 +188,7 @@ export default function Page() {
           quibusdam vitae. Eveniet! Lorem ipsum dolor sit amet
         </div>
       </section>
+      <Footer/>
     </div>
   );
 }

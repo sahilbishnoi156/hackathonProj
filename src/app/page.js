@@ -28,7 +28,7 @@ export default function Page() {
       <div className="flex items-center justify-center gap-6">
         <div className="rounded-xl md:w-3/4 sm:w-3/5 w-full h-72 bg-[#3c4627] flex flex-col items-center justify-center text-white text-[7vw] md:text-[2.6vw] sm:text-[4vw]">
           <div className="flex gap-4 items-center justify-center">
-            Measure All The
+            Measure all the
             <div className="sm:h-9 h-7 w-14 relative">
               <Image
                 src={"/avatar.webp"}
